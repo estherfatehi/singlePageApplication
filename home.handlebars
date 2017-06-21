@@ -1,0 +1,67 @@
+<h1>Workouts</h1>
+<h2>Form to add a new workout</h2>
+<form>
+	<input type="hidden" name="id" id="id" value="{{this.id}}">
+	<label>Name of workout:
+		<input type="text" name="name" id="name">
+	</label>
+	<br />
+	<label>Number of reps:
+		<input type="number" name="reps" id="reps">
+	</label>
+	<br />
+	<label>Weight:
+		<input type="number" name="weight" id="weight">
+	</label>
+	<br />
+	<label>Date:
+		<input type="date" name="date" id="date">
+	</label>
+	<br />
+	<label>1 for Lbs/0 for Kg:<br>
+		<input type="number" name="unit" id="unit">
+	</label>
+	<br />
+	<input type="submit" name="addWorkout" id="addWorkout" value="Add Workout">
+</form>
+
+<br />
+<table id="myTable">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Reps</th>
+			<th>Weight</th>
+			<th>Date</th>
+			<th>Lbs/Kg</th>
+		</tr>
+	</thead>
+	
+</table>
+<br />
+<h3>Form to edit workout</h3>
+<form>
+	<input type="hidden" name="id" id="editId" value="{{this.id}}">
+	<label>Name of workout:
+		<input type="text" name="name" id="editName">
+	</label>
+	<br />
+	<label>Number of reps:
+		<input type="number" name="reps" id="editReps">
+	</label>
+	<br />
+	<label>Weight:
+		<input type="number" name="weight" id="editWeight">
+	</label>
+	<br />
+	<label>Date:
+		<input type="date" name="date" id="editDate">
+	</label>
+	<br />
+	<label>1 for Lbs/0 for Kg:<br>
+		<input type="number" name="unit" id="editUnit">
+	</label>
+	<br />
+	<input type="submit" name="editWorkout" id="editWorkout" value="Update">
+</form>
+<script src="ajax.js"></script>
