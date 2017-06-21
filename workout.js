@@ -28,6 +28,7 @@ app.get('/',function(req,res,next){
   });
 });
 
+//sends row
 app.get('/show-table',function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
@@ -42,6 +43,7 @@ app.get('/show-table',function(req,res,next){
   });
 });
 
+//sends the row corresponding to the requested ID
 app.get('/get-row',function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM workouts WHERE id=?', [req.query.id], function(err, rows, fields){
@@ -56,6 +58,7 @@ app.get('/get-row',function(req,res,next){
   });
 });
 
+//inserts information into SQL table
 app.get('/insert',function(req,res,next){
 
   mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `unit`) VALUES (?, ?, ?, ?, ?)", ([req.query.name,req.query.reps,req.query.weight,req.query.date,req.query.unit]), function(err, result){
@@ -68,7 +71,7 @@ app.get('/insert',function(req,res,next){
   });
 });
 
-
+//deletes row with corresponding ID from SQL table
 app.get('/delete',function(req,res,next){
   mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if(err){
@@ -79,7 +82,7 @@ app.get('/delete',function(req,res,next){
   });
 });
 
-///safe-update?id=1&name=The+Task&done=false
+//updates only the altered information in SQL table
 app.get('/update',function(req,res,next){
   mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if(err){
@@ -101,7 +104,7 @@ app.get('/update',function(req,res,next){
   });
 });
 
-
+//resets table to empty
 app.get('/reset-table',function(req,res,next){
   var context = {};
   mysql.pool.query("DROP TABLE IF EXISTS workouts", function(err, rows, field){
